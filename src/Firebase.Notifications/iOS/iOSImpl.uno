@@ -131,8 +131,14 @@ namespace Firebase.Notifications
             Lifecycle.EnteringForeground -= DispatchDelayedRegToken;
         }
 
-        [Foreign(Language.ObjC)]
+
         internal static void RegisterForPushNotifications()
+        {
+            Firebase.Core.Init();
+            RegisterForPushNotifications1();
+        }
+        [Foreign(Language.ObjC)]
+        internal static void RegisterForPushNotifications1()
         @{
             if ([UNUserNotificationCenter class] != nil)
             {
